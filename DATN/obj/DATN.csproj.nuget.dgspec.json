@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Study\\DATN\\Project\\DATN\\DATN\\DATN.csproj": {}
+    "D:\\Le_Vinh_Tan\\Project ASP\\ProjectASP\\DATN\\DATN.csproj": {}
   },
   "projects": {
-    "D:\\Study\\DATN\\Project\\DATN\\DATN\\DATN.csproj": {
+    "D:\\Le_Vinh_Tan\\Project ASP\\ProjectASP\\DATN\\DATN.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\DATN\\Project\\DATN\\DATN\\DATN.csproj",
+        "projectUniqueName": "D:\\Le_Vinh_Tan\\Project ASP\\ProjectASP\\DATN\\DATN.csproj",
         "projectName": "DATN",
-        "projectPath": "D:\\Study\\DATN\\Project\\DATN\\DATN\\DATN.csproj",
-        "packagesPath": "C:\\Users\\tiendeptrai\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\DATN\\Project\\DATN\\DATN\\obj\\",
+        "projectPath": "D:\\Le_Vinh_Tan\\Project ASP\\ProjectASP\\DATN\\DATN.csproj",
+        "packagesPath": "C:\\Users\\vinhl\\.nuget\\packages\\",
+        "outputPath": "D:\\Le_Vinh_Tan\\Project ASP\\ProjectASP\\DATN\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tiendeptrai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\vinhl\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,16 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
