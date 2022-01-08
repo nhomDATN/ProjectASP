@@ -30,7 +30,7 @@ namespace DATN.Models
         public string Email { get; set; }
 
         [DisplayName("SĐT")]
-        [RegularExpression("090\\d{7}", ErrorMessage = "SĐT không hợp lệ")]
+        [RegularExpression("0\\d{9}", ErrorMessage = "SĐT không hợp lệ")]
         public string Phone { get; set; }
 
         [DisplayName("Địa chỉ")]
@@ -59,6 +59,12 @@ namespace DATN.Models
         public List<History> Histories { get; set; }
 
         public List<Cart> Carts { get; set; }
+
+        public List<Evaluate> Evaluates { get; set; }
+
+        public List<Wishlist> Wishlists { get; set; }
+
+        public List<Comment> Comments { get; set; }
 
     }
 }

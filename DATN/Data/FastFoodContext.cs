@@ -28,5 +28,11 @@ namespace DATN.Data
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
 
         public DbSet<Promotion> Promotions { get; set; }
+
+        public DbSet<Evaluate> Evaluates { get; set; }
+
+        public DbSet<Wishlist> Wishlists { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
     }
 }

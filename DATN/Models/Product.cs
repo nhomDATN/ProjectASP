@@ -23,6 +23,9 @@ namespace DATN.Models
         //[DisplayName("Mô tả")]
         public string Description { get; set; }
 
+        //[DisplayName("Chi tiết sản phẩm")]
+        public string Detail { get; set; }
+
         //[DisplayName("Giá (VNĐ)")]
         //[DisplayFormat(DataFormatString = "{0:n0}")]
         //[DefaultValue(0)]
@@ -56,5 +59,11 @@ namespace DATN.Models
         public List<InvoiceDetail> InvoiceDetails { get; set; }
 
         public List<Cart> Carts { get; set; }
+
+        public List<Evaluate> Evaluates { get; set; }
+
+        public List<Wishlist> Wishlists { get; set; }
+
+        public List<Comment> Comments { get; set; }
     }
 }
