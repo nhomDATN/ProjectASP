@@ -39,11 +39,8 @@ namespace DATN.Models
 
         // Navigation reference property cho khóa ngoại đến ProductType
         //[DisplayName("Loại sản phẩm")]
+        [ForeignKey("ProductType_Id")]
         public ProductType ProductType { get; set; }
-
-        public int Promotion_Id { get; set; }
-
-        public Promotion Promotion { get; set; }
 
         //[DisplayName("Ảnh minh họa")]
         public string Image { get; set; }
@@ -56,6 +53,8 @@ namespace DATN.Models
         public int Status { get; set; } = 1;
 
         // Collection reference property cho khóa ngoại từ InvoiceDetail
+        public List<Promotion> Promotions { get; set; }
+
         public List<InvoiceDetail> InvoiceDetails { get; set; }
 
         public List<Cart> Carts { get; set; }

@@ -69,13 +69,7 @@ namespace DATN.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AccountId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Account_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Product_Id")
@@ -86,9 +80,9 @@ namespace DATN.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("Account_Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("Product_Id");
 
                     b.ToTable("Carts");
                 });
@@ -100,9 +94,6 @@ namespace DATN.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AccountId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Account_Id")
                         .HasColumnType("int");
 
@@ -112,9 +103,6 @@ namespace DATN.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Product_Id")
                         .HasColumnType("int");
 
@@ -123,9 +111,9 @@ namespace DATN.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("Account_Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("Product_Id");
 
                     b.ToTable("Comments");
                 });
@@ -137,17 +125,11 @@ namespace DATN.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AccountId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Account_Id")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EvaluationDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
 
                     b.Property<int>("Product_Id")
                         .HasColumnType("int");
@@ -160,42 +142,11 @@ namespace DATN.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("Account_Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("Product_Id");
 
                     b.ToTable("Evaluates");
-                });
-
-            modelBuilder.Entity("DATN.Models.History", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AccountId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Account_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("InvoiceId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Invoice_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.HasIndex("InvoiceId");
-
-                    b.ToTable("Histories");
                 });
 
             modelBuilder.Entity("DATN.Models.Invoice", b =>
@@ -204,9 +155,6 @@ namespace DATN.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AccountId")
-                        .HasColumnType("int");
 
                     b.Property<int>("Account_Id")
                         .HasColumnType("int");
@@ -237,7 +185,7 @@ namespace DATN.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("Account_Id");
 
                     b.ToTable("Invoices");
                 });
@@ -249,22 +197,10 @@ namespace DATN.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("InvoiceId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Invoice_Id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Product_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PromotionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Promotion_ID")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -275,11 +211,9 @@ namespace DATN.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InvoiceId");
+                    b.HasIndex("Invoice_Id");
 
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("PromotionId");
+                    b.HasIndex("Product_Id");
 
                     b.ToTable("InvoiceDetails");
                 });
@@ -309,16 +243,7 @@ namespace DATN.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductTypeId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductType_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PromotionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Promotion_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
@@ -329,9 +254,7 @@ namespace DATN.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductTypeId");
-
-                    b.HasIndex("PromotionId");
+                    b.HasIndex("ProductType_Id");
 
                     b.ToTable("Products");
                 });
@@ -368,6 +291,9 @@ namespace DATN.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Product_Id")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartDay")
                         .HasColumnType("datetime2");
 
@@ -379,6 +305,8 @@ namespace DATN.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Product_Id");
+
                     b.ToTable("Promotions");
                 });
 
@@ -389,13 +317,7 @@ namespace DATN.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AccountId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Account_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Product_Id")
@@ -406,9 +328,9 @@ namespace DATN.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("Account_Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("Product_Id");
 
                     b.ToTable("Wishlists");
                 });
@@ -417,11 +339,15 @@ namespace DATN.Migrations
                 {
                     b.HasOne("DATN.Models.Account", "Account")
                         .WithMany("Carts")
-                        .HasForeignKey("AccountId");
+                        .HasForeignKey("Account_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DATN.Models.Product", "Product")
                         .WithMany("Carts")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("Product_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
 
@@ -432,11 +358,15 @@ namespace DATN.Migrations
                 {
                     b.HasOne("DATN.Models.Account", "Account")
                         .WithMany("Comments")
-                        .HasForeignKey("AccountId");
+                        .HasForeignKey("Account_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DATN.Models.Product", "Product")
                         .WithMany("Comments")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("Product_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
 
@@ -447,37 +377,28 @@ namespace DATN.Migrations
                 {
                     b.HasOne("DATN.Models.Account", "Account")
                         .WithMany("Evaluates")
-                        .HasForeignKey("AccountId");
+                        .HasForeignKey("Account_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DATN.Models.Product", "Product")
                         .WithMany("Evaluates")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("Product_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
 
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("DATN.Models.History", b =>
-                {
-                    b.HasOne("DATN.Models.Account", "Account")
-                        .WithMany("Histories")
-                        .HasForeignKey("AccountId");
-
-                    b.HasOne("DATN.Models.Invoice", "Invoice")
-                        .WithMany("Histories")
-                        .HasForeignKey("InvoiceId");
-
-                    b.Navigation("Account");
-
-                    b.Navigation("Invoice");
-                });
-
             modelBuilder.Entity("DATN.Models.Invoice", b =>
                 {
                     b.HasOne("DATN.Models.Account", "Account")
                         .WithMany("Invoices")
-                        .HasForeignKey("AccountId");
+                        .HasForeignKey("Account_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
                 });
@@ -486,47 +407,56 @@ namespace DATN.Migrations
                 {
                     b.HasOne("DATN.Models.Invoice", "Invoice")
                         .WithMany("InvoiceDetails")
-                        .HasForeignKey("InvoiceId");
+                        .HasForeignKey("Invoice_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DATN.Models.Product", "Product")
                         .WithMany("InvoiceDetails")
-                        .HasForeignKey("ProductId");
-
-                    b.HasOne("DATN.Models.Promotion", "Promotion")
-                        .WithMany("InvoiceDetails")
-                        .HasForeignKey("PromotionId");
+                        .HasForeignKey("Product_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Invoice");
 
                     b.Navigation("Product");
-
-                    b.Navigation("Promotion");
                 });
 
             modelBuilder.Entity("DATN.Models.Product", b =>
                 {
                     b.HasOne("DATN.Models.ProductType", "ProductType")
                         .WithMany("Products")
-                        .HasForeignKey("ProductTypeId");
-
-                    b.HasOne("DATN.Models.Promotion", "Promotion")
-                        .WithMany("Products")
-                        .HasForeignKey("PromotionId");
+                        .HasForeignKey("ProductType_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ProductType");
+                });
 
-                    b.Navigation("Promotion");
+            modelBuilder.Entity("DATN.Models.Promotion", b =>
+                {
+                    b.HasOne("DATN.Models.Product", "Product")
+                        .WithMany("Promotions")
+                        .HasForeignKey("Product_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("DATN.Models.Wishlist", b =>
                 {
                     b.HasOne("DATN.Models.Account", "Account")
                         .WithMany("Wishlists")
-                        .HasForeignKey("AccountId");
+                        .HasForeignKey("Account_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DATN.Models.Product", "Product")
                         .WithMany("Wishlists")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("Product_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
 
@@ -541,8 +471,6 @@ namespace DATN.Migrations
 
                     b.Navigation("Evaluates");
 
-                    b.Navigation("Histories");
-
                     b.Navigation("Invoices");
 
                     b.Navigation("Wishlists");
@@ -550,8 +478,6 @@ namespace DATN.Migrations
 
             modelBuilder.Entity("DATN.Models.Invoice", b =>
                 {
-                    b.Navigation("Histories");
-
                     b.Navigation("InvoiceDetails");
                 });
 
@@ -565,18 +491,13 @@ namespace DATN.Migrations
 
                     b.Navigation("InvoiceDetails");
 
+                    b.Navigation("Promotions");
+
                     b.Navigation("Wishlists");
                 });
 
             modelBuilder.Entity("DATN.Models.ProductType", b =>
                 {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("DATN.Models.Promotion", b =>
-                {
-                    b.Navigation("InvoiceDetails");
-
                     b.Navigation("Products");
                 });
 #pragma warning restore 612, 618

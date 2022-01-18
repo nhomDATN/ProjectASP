@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,9 +18,10 @@ namespace DATN.Models
 
         public DateTime EndDay { get; set; }
 
-        public List<Product> Products { get; set; }
+        public int Product_Id { get; set; }
 
-        public List<InvoiceDetail> InvoiceDetails { get; set; }
+        [ForeignKey("Product_Id")]
+        public Product Product { get; set; }
 
         //[DisplayName("Còn hiệu lực")]
         //[DefaultValue(1)]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,6 +19,7 @@ namespace DATN.Models
 
         // Navigation reference property cho khóa ngoại đến Account 
         //[DisplayName("Khách hàng")]
+        [ForeignKey("Account_Id")]
         public Account Account { get; set; }
 
         //[DisplayName("Ngày lập")]
@@ -47,6 +49,5 @@ namespace DATN.Models
         // Collection reference property cho khóa ngoại từ InvoiceDetail
         public List<InvoiceDetail> InvoiceDetails { get; set; }
 
-        public List<History> Histories { get; set; }
     }
 }

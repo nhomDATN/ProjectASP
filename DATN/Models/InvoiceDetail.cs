@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,17 +14,15 @@ namespace DATN.Models
 
         // Navigation reference property cho khóa ngoại đến Invoice
         //[DisplayName("Hóa đơn")]
+        [ForeignKey("Invoice_Id")]
         public Invoice Invoice { get; set; }
 
         public int Product_Id { get; set; }
 
         // Navigation reference property cho khóa ngoại đến Product
         //[DisplayName("Sản phẩm")]
+        [ForeignKey("Product_Id")]
         public Product Product { get; set; }
-
-        public int Promotion_ID { get; set; }
-
-        public Promotion Promotion { get; set; }
 
         //[DisplayName("Số lượng")]
         //[DefaultValue(1)]

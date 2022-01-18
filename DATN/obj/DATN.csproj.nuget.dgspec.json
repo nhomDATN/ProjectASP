@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Le_Vinh_Tan\\Project ASP\\ProjectASP\\DATN\\DATN.csproj": {}
+    "D:\\Le_Vinh_Tan\\DoAnTN\\ProjectASP\\DATN\\DATN.csproj": {}
   },
   "projects": {
-    "D:\\Le_Vinh_Tan\\Project ASP\\ProjectASP\\DATN\\DATN.csproj": {
+    "D:\\Le_Vinh_Tan\\DoAnTN\\ProjectASP\\DATN\\DATN.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Le_Vinh_Tan\\Project ASP\\ProjectASP\\DATN\\DATN.csproj",
+        "projectUniqueName": "D:\\Le_Vinh_Tan\\DoAnTN\\ProjectASP\\DATN\\DATN.csproj",
         "projectName": "DATN",
-        "projectPath": "D:\\Le_Vinh_Tan\\Project ASP\\ProjectASP\\DATN\\DATN.csproj",
+        "projectPath": "D:\\Le_Vinh_Tan\\DoAnTN\\ProjectASP\\DATN\\DATN.csproj",
         "packagesPath": "C:\\Users\\vinhl\\.nuget\\packages\\",
-        "outputPath": "D:\\Le_Vinh_Tan\\Project ASP\\ProjectASP\\DATN\\obj\\",
+        "outputPath": "D:\\Le_Vinh_Tan\\DoAnTN\\ProjectASP\\DATN\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vinhl\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DATN.Migrations
 {
-    public partial class FullModels : Migration
+    public partial class fulldb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,23 +43,6 @@ namespace DATN.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Promotions",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Value = table.Column<double>(type: "float", nullable: false),
-                    StartDay = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDay = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Promotions", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Invoices",
                 columns: table => new
                 {
@@ -67,7 +50,6 @@ namespace DATN.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Account_Id = table.Column<int>(type: "int", nullable: false),
-                    AccountId = table.Column<int>(type: "int", nullable: true),
                     IssuedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeliveDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ShippingCost = table.Column<double>(type: "float", nullable: false),
@@ -80,11 +62,11 @@ namespace DATN.Migrations
                 {
                     table.PrimaryKey("PK_Invoices", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Invoices_Accounts_AccountId",
-                        column: x => x.AccountId,
+                        name: "FK_Invoices_Accounts_Account_Id",
+                        column: x => x.Account_Id,
                         principalTable: "Accounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,12 +78,10 @@ namespace DATN.Migrations
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Detail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<int>(type: "int", nullable: false),
                     Stock = table.Column<int>(type: "int", nullable: false),
                     ProductType_Id = table.Column<int>(type: "int", nullable: false),
-                    ProductTypeId = table.Column<int>(type: "int", nullable: true),
-                    Promotion_Id = table.Column<int>(type: "int", nullable: false),
-                    PromotionId = table.Column<int>(type: "int", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -109,46 +89,11 @@ namespace DATN.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_ProductTypes_ProductTypeId",
-                        column: x => x.ProductTypeId,
+                        name: "FK_Products_ProductTypes_ProductType_Id",
+                        column: x => x.ProductType_Id,
                         principalTable: "ProductTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Products_Promotions_PromotionId",
-                        column: x => x.PromotionId,
-                        principalTable: "Promotions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Histories",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Account_Id = table.Column<int>(type: "int", nullable: false),
-                    AccountId = table.Column<int>(type: "int", nullable: true),
-                    Invoice_Id = table.Column<int>(type: "int", nullable: false),
-                    InvoiceId = table.Column<int>(type: "int", nullable: true),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Histories", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Histories_Accounts_AccountId",
-                        column: x => x.AccountId,
-                        principalTable: "Accounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Histories_Invoices_InvoiceId",
-                        column: x => x.InvoiceId,
-                        principalTable: "Invoices",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -158,26 +103,82 @@ namespace DATN.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Account_Id = table.Column<int>(type: "int", nullable: false),
-                    AccountId = table.Column<int>(type: "int", nullable: true),
                     Product_Id = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Carts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Carts_Accounts_AccountId",
-                        column: x => x.AccountId,
+                        name: "FK_Carts_Accounts_Account_Id",
+                        column: x => x.Account_Id,
                         principalTable: "Accounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Carts_Products_ProductId",
-                        column: x => x.ProductId,
+                        name: "FK_Carts_Products_Product_Id",
+                        column: x => x.Product_Id,
                         principalTable: "Products",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Product_Id = table.Column<int>(type: "int", nullable: false),
+                    Account_Id = table.Column<int>(type: "int", nullable: false),
+                    CommentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_Accounts_Account_Id",
+                        column: x => x.Account_Id,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Comments_Products_Product_Id",
+                        column: x => x.Product_Id,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Evaluates",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Product_Id = table.Column<int>(type: "int", nullable: false),
+                    Account_Id = table.Column<int>(type: "int", nullable: false),
+                    Star = table.Column<int>(type: "int", nullable: false),
+                    EvaluationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Evaluates", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Evaluates_Accounts_Account_Id",
+                        column: x => x.Account_Id,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Evaluates_Products_Product_Id",
+                        column: x => x.Product_Id,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -187,11 +188,7 @@ namespace DATN.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Invoice_Id = table.Column<int>(type: "int", nullable: false),
-                    InvoiceId = table.Column<int>(type: "int", nullable: true),
                     Product_Id = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: true),
-                    Promotion_ID = table.Column<int>(type: "int", nullable: false),
-                    PromotionId = table.Column<int>(type: "int", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     UnitPrice = table.Column<int>(type: "int", nullable: false)
                 },
@@ -199,74 +196,134 @@ namespace DATN.Migrations
                 {
                     table.PrimaryKey("PK_InvoiceDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_InvoiceDetails_Invoices_InvoiceId",
-                        column: x => x.InvoiceId,
+                        name: "FK_InvoiceDetails_Invoices_Invoice_Id",
+                        column: x => x.Invoice_Id,
                         principalTable: "Invoices",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_InvoiceDetails_Products_ProductId",
-                        column: x => x.ProductId,
+                        name: "FK_InvoiceDetails_Products_Product_Id",
+                        column: x => x.Product_Id,
                         principalTable: "Products",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Promotions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Value = table.Column<double>(type: "float", nullable: false),
+                    StartDay = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDay = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Product_Id = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Promotions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_InvoiceDetails_Promotions_PromotionId",
-                        column: x => x.PromotionId,
-                        principalTable: "Promotions",
+                        name: "FK_Promotions_Products_Product_Id",
+                        column: x => x.Product_Id,
+                        principalTable: "Products",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Wishlists",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Product_Id = table.Column<int>(type: "int", nullable: false),
+                    Account_Id = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Wishlists", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Wishlists_Accounts_Account_Id",
+                        column: x => x.Account_Id,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Wishlists_Products_Product_Id",
+                        column: x => x.Product_Id,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Carts_AccountId",
+                name: "IX_Carts_Account_Id",
                 table: "Carts",
-                column: "AccountId");
+                column: "Account_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Carts_ProductId",
+                name: "IX_Carts_Product_Id",
                 table: "Carts",
-                column: "ProductId");
+                column: "Product_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Histories_AccountId",
-                table: "Histories",
-                column: "AccountId");
+                name: "IX_Comments_Account_Id",
+                table: "Comments",
+                column: "Account_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Histories_InvoiceId",
-                table: "Histories",
-                column: "InvoiceId");
+                name: "IX_Comments_Product_Id",
+                table: "Comments",
+                column: "Product_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InvoiceDetails_InvoiceId",
+                name: "IX_Evaluates_Account_Id",
+                table: "Evaluates",
+                column: "Account_Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Evaluates_Product_Id",
+                table: "Evaluates",
+                column: "Product_Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InvoiceDetails_Invoice_Id",
                 table: "InvoiceDetails",
-                column: "InvoiceId");
+                column: "Invoice_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InvoiceDetails_ProductId",
+                name: "IX_InvoiceDetails_Product_Id",
                 table: "InvoiceDetails",
-                column: "ProductId");
+                column: "Product_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InvoiceDetails_PromotionId",
-                table: "InvoiceDetails",
-                column: "PromotionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Invoices_AccountId",
+                name: "IX_Invoices_Account_Id",
                 table: "Invoices",
-                column: "AccountId");
+                column: "Account_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_ProductTypeId",
+                name: "IX_Products_ProductType_Id",
                 table: "Products",
-                column: "ProductTypeId");
+                column: "ProductType_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_PromotionId",
-                table: "Products",
-                column: "PromotionId");
+                name: "IX_Promotions_Product_Id",
+                table: "Promotions",
+                column: "Product_Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Wishlists_Account_Id",
+                table: "Wishlists",
+                column: "Account_Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Wishlists_Product_Id",
+                table: "Wishlists",
+                column: "Product_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -275,10 +332,19 @@ namespace DATN.Migrations
                 name: "Carts");
 
             migrationBuilder.DropTable(
-                name: "Histories");
+                name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "Evaluates");
 
             migrationBuilder.DropTable(
                 name: "InvoiceDetails");
+
+            migrationBuilder.DropTable(
+                name: "Promotions");
+
+            migrationBuilder.DropTable(
+                name: "Wishlists");
 
             migrationBuilder.DropTable(
                 name: "Invoices");
@@ -291,9 +357,6 @@ namespace DATN.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProductTypes");
-
-            migrationBuilder.DropTable(
-                name: "Promotions");
         }
     }
 }

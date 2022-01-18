@@ -56,8 +56,6 @@ namespace DATN.Models
         // Collection reference property cho khóa ngoại từ Invoice
         public List<Invoice> Invoices { get; set; }
 
-        public List<History> Histories { get; set; }
-
         public List<Cart> Carts { get; set; }
 
         public List<Evaluate> Evaluates { get; set; }
